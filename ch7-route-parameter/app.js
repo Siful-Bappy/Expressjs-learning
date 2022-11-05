@@ -1,4 +1,4 @@
-import express from "express";
+import express, { query } from "express";
 // import stu from "./routes/student.js";
 const app = express();
 const port = 3000;
@@ -36,6 +36,32 @@ app.get("/:type(post|article)/:id", (req, res) => {
 app.get("/student/add/:id([a-z]{2})", (req, res) => {
     const {id} = req.params;
     res.send(`Student add ${id}`)
+})
+
+
+
+app.param(["id", "page"], (req, res, next, value) => {
+    console.log(`Called only once id: ${value}`)
+    next()
+})
+app.get("/user/:id/:page", (req, res) => {
+    console.log("This is user Id Path")
+    res.send("Respose OK");
+})
+
+// only exicute once if there is 2 or more id been matched
+// app.param("id", (req, res, next, id) => {
+//     console.log(`Year: ${id}`)
+//     next()
+// })
+// app.params()
+// app.get("/user/: 
+
+// Query string
+app.get("/product", (req, res) => {
+    const {book, id} = req.query;
+    console.log(req.query.book)
+    res.send("Response ok");
 })
 
 app.listen(port, () => {
