@@ -1,7 +1,7 @@
 import {join} from "path"
 
 const homeController = (req, res) => {
-    res.send(join(process.cwd(), "views", "home.ejs"));
+    res.render("index", {"name": "Bappy"});
 }
 // const homeController = (req, res) => {
 //     res.send("Home page is available");
