@@ -1,0 +1,25 @@
+<%- include("./particals/header.ejs") %>
+<%- include("./particals/navbar.ejs") %>
+<div class="container mt-5">
+<div class="row mt-5">
+<h1>Registration</h1>
+<hr>
+<form method="post">
+    <div class="mb-5">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" required id="name" name="name">
+    </div>
+    <div class="mb-5">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" required id="email" name="email">
+    </div>
+    <div class="mb-5">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" required id="password" name="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Registration</button>
+  </form>
+</div>
+
+</div>
+<%- include("./particals/footer.ejs") %>
