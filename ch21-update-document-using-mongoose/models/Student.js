@@ -64,9 +64,19 @@ const studentModel = mongoose.model("Student", studentSchema);
 // }
 
 // update multiple
+// const updateBuId = async(id) => {
+//     try {
+//         const result = await studentModel.updateMany({_id: id}, {name: "Jennie", age: 24}, {upsert: true})
+//         console.log(result);
+//     } catch (e) {
+//         console.log(e);
+//     }
+// }
+
+// Delete by id
 const updateBuId = async(id) => {
     try {
-        const result = await studentModel.updateMany({_id: id}, {name: "Jennie", age: 24}, {upsert: true})
+        const result = await studentModel.findByIdAndDelete({_id: id, age: 27})
         console.log(result);
     } catch (e) {
         console.log(e);
