@@ -103,8 +103,30 @@ const getAllDocSpecificField = async() => {
 // }`
 
 // Mix document 
+// const getAllDoc = async() => {
+//   const result = await studentModul.find({}, {name: 1, age: 1}, {limit: 3, skip: 1});
+//   console.log(result);
+// }
+
+// comparison query operatior
+// const getAllDoc = async() => {
+  // const result = await studentModul.find({age: {$gt: 25}});
+  // const result = await studentModul.find({age: {$gte: 25}});
+  // const result = await studentModul.find({age: {$lt: 25}});
+  // const result = await studentModul.find({age: {$lte: 25}});
+  // const result = await studentModul.find({age: {$ne: 25}});
+  // const result = await studentModul.find({age: {$in: [24, 25]}});
+//   const result = await studentModul.find({age: {$nin: [24, 25]}});
+//   console.log(result);
+// }
+
+// Logical operator
 const getAllDoc = async() => {
-  const result = await studentModul.find({}, {name: 1, age: 1}, {limit: 3, skip: 1});
+  // const result = await studentModul.find({$and: [{age: 24}, {fees: 6500.00}]});
+  // const result = await studentModul.find({$or: [{age: 24}, {fees: 6500.00}]});
+  // const result = await studentModul.find({age: {$not: {$gt: 25}}});
+  const result = await studentModul.find({$nor: [{age: 24}, {fees: 6500.00}]});
+  // const result = await studentModul.find({$and: [{age: {$gt: 25}}, {fees: {$gt: 4500}}]});
   console.log(result);
 }
 
