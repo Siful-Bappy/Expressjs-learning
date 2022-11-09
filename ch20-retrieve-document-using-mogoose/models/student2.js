@@ -52,13 +52,62 @@ const getAllDocSpecificField = async() => {
 
     // const result = await studentModul.find().select("-name -age -fees"); // exclude
   // const result = await studentModul.find().select(["-name", "-age", "-fees"]); //exclude
-  const result = await studentModul.find().select({name: 0, age: 0}); // exclude
-  console.log(result);
+  // const result = await studentModul.find().select({name: 0, age: 0}); // exclude
+  // console.log(result);
   // result.forEach((item) => {
   //   console.log(item.name, item.age, item.fees.toString(),  item.hobbies[0], item.comments[0].value);
   // })
 }
 
-export { getAllDocSpecificField};
-// export {getAllDoc, getAllDocSpecificField};
+// Get single doc
+// const getSingleDoc = async() => {
+//   const result = await studentModul.findById("63691f546d74190e1903cd52", "name age");
+//   console.log(result);
+// }
+
+// Retriveve all document
+// const getAllDoc = async() => {
+//     const result = await studentModul.find({name: "Bappy"}).select("name age");
+//     console.log(result);
+// }
+
+// limit 
+// const getAllDoc = async() => {
+//     // const result = await studentModul.find().limit(3);
+//     // another way to write this same things
+//     const result = await studentModul.find({}, null, {limit: 3})
+//     console.log(result);
+// }
+
+// skip 
+// const getAllDoc = async() => {
+//   // const result = await studentModul.find().skip(1);
+//   // another way to write this same things
+//   const result = await studentModul.find({}, null, {skip: 1})
+//   console.log(result);
+// }
+
+// // Count document 
+// const getAllDoc = async() => {
+//   const result = await studentModul.find().countDocuments();
+//   console.log(result);
+// }
+
+// Sort document 
+// con`st getAllDoc = async() => {
+//   // assigding
+//   const result = await studentModul.find().sort({age: 1});
+//   // decending
+//   // const result = await studentModul.find().sort({age: -1});
+//   console.log(result);
+// }`
+
+// Mix document 
+const getAllDoc = async() => {
+  const result = await studentModul.find({}, {name: 1, age: 1}, {limit: 3, skip: 1});
+  console.log(result);
+}
+
+export { getAllDoc};
+// export {getAllDoc, getAllDocSpecificField, getSingleDoc};
 // export default studentDoc;
