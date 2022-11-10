@@ -1,16 +1,34 @@
 import userModel from "../models/User.js";
+import bcrypt from 'bcrypt'
 
 class userController {
   static home = (req, res) => {
     res.render("index");
   };
 
-  static createUserDoc = async (req, res) => {
+  // Without hasing
+//   static createUserDoc = async (req, res) => {
+//     try {
+//       const doc = new userModel({
+//         name: req.body.name,
+//         email: req.body.email,
+//         password: req.body.password,
+//       });
+//     //   console.log(doc);
+//       await doc.save();
+//       res.redirect("/login");
+//     } catch (e) {
+//       console.log(e);
+//     }
+
+// With hasing
+static createUserDoc = async (req, res) => {
+    const hashPassword = await bcrypt.hash(req.body.password, 10);
     try {
       const doc = new userModel({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password,
+        password: req.body.hashPassword,
       });
     //   console.log(doc);
       await doc.save();
@@ -19,6 +37,7 @@ class userController {
       console.log(e);
     }
   };
+  
   static registration = (req, res) => {
     res.render("registration");
   };
